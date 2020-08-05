@@ -33,7 +33,9 @@ const { Model, DataTypes } = require('sequelize');
     }
 
     static associate(models) {
-      this.belongsTo(models.LevelUser);
+      this.belongsTo(models.LevelUser, {
+        foreignKey: 'level'
+      });
     }
   };
   

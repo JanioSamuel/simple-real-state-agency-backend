@@ -1,4 +1,5 @@
 const Property = require('../models/Property');
+const PropertyImage = require('../models/PropertyImage');
 const PropertyImageController = require('./PropertyImageController');
 
 module.exports = {
@@ -22,7 +23,22 @@ module.exports = {
 
   async index(req, res) {
     const { id } = req.query;
-    const response = await Property.findOne({ where: { id: id } });
+    let response = null;
+    if (id !== undefined) {
+      response = await Property.findOne({ 
+        where: { id: id } ,
+        include: [{
+          model: PropertyImage,
+        }]
+      });
+    } else {
+      response = await Property.findAll({
+        include: [{
+          model: PropertyImage,
+        }]
+      });
+    }
+    
     return res.json(response);
   },
 

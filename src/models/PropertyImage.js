@@ -35,7 +35,9 @@ class PropertyImage extends Model {
     })
   }
   static associate(models) {
-    this.belongsTo(models.Property);
+    this.belongsTo(models.Property, {
+      foreignKey: 'property_id'
+    });
   }
 }
 

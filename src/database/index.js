@@ -12,4 +12,9 @@ Property.init(connection);
 PropertyImage.init(connection);
 User.init(connection);
 
+LevelUser.associate(connection.models);
+Property.associate(connection.models);
+PropertyImage.associate(connection.models);
+User.associate(connection.models);
+
 module.exports = connection;
