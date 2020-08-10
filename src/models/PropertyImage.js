@@ -30,6 +30,12 @@ class PropertyImage extends Model {
         allowNull: false,
         type: DataTypes.STRING
       },
+      thumbnail_url: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return `http://localhost:3333/files/${this.original_name}`;
+        }
+      }
     }, {
       sequelize
     })
