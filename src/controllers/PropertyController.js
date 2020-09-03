@@ -25,8 +25,8 @@ module.exports = {
     const { id } = req.query;
     let response = null;
     if (id !== undefined) {
-      response = await Property.findOne({ 
-        where: { id: id } ,
+      response = await Property.findOne({
+        where: { id: id },
         include: [{
           model: PropertyImage,
         }]
@@ -38,7 +38,7 @@ module.exports = {
         }]
       });
     }
-    
+
     return res.json(response);
   },
 
